@@ -5,10 +5,10 @@ pipeline {
             steps {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/trainSchedule.zip'        
+                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
             }
         }
-    stage('DeployToStaging') {
+        stage('DeployToStaging') {
             when {
                 branch 'master'
             }
@@ -37,8 +37,8 @@ pipeline {
                     )
                 }
             }
-
-    stage('DeployToProduction') {
+        }
+        stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -68,8 +68,7 @@ pipeline {
                         ]
                     )
                 }
-}
-    }   
-        
+            }
+        }
     }
 }
